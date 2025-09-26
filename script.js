@@ -1,44 +1,29 @@
-// Year + theme toggle + smooth scroll + mobile menu + basic form UX
-(function(){
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+// 语言切换按钮
+const langToggle = document.getElementById("langToggle");
 
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const themeToggle = document.getElementById('themeToggle');
-  const setTheme = (light) => {
-    document.documentElement.classList.toggle('light', light);
-    localStorage.setItem('theme', light ? 'light' : 'dark');
-  };
-  const saved = localStorage.getItem('theme');
-  if (saved) setTheme(saved === 'light'); else setTheme(!prefersDark);
-  themeToggle?.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('light')));
+// 默认语言：中文
+let currentLang = localStorage.getItem("lang") || "zh";
+setLanguage(currentLang);
 
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if (el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
-    });
-  });
+// 切换语言时执行
+langToggle.addEventListener("click", () => {
+  currentLang = currentLang === "zh" ? "en" : "zh";
+  localStorage.setItem("lang", currentLang);
+  setLanguage(currentLang);
+});
 
-  // Mobile menu
-  const burger = document.getElementById('hamburger');
-  const nav = document.getElementById('mainnav');
-  burger?.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+// 设置语言显示
+function setLanguage(lang) {
+  const zhEls = document.querySelectorAll('[data-lang="zh"]');
+  const enEls = document.querySelectorAll('[data-lang="en"]');
 
-  // Simple form UX
-  const form = document.getElementById('contactForm');
-  const msg = document.getElementById('formMsg');
-  form?.addEventListener('submit', async (e) => {
-    if (form.action.includes('YOUR_FORMSPREE_ID')){
-      e.preventDefault();
-      msg.textContent = '请先在 HTML 里把 YOUR_FORMSPREE_ID 替换成你的表单 ID。';
-      return;
-    }
-    msg.textContent = '发送中…';
-  });
-})();
+  if (lang === "zh") {
+    zhEls.forEach(el => el.style.display = "");
+    enEls.forEach(el => el.style.display = "none");
+    langToggle.textContent = "EN | 中文";
+  } else {
+    zhEls.forEach(el => el.style.display = "none");
+    enEls.forEach(el => el.style.display = "");
+    langToggle.textContent = "中文 | EN";
+  }
+}
