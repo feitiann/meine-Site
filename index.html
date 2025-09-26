@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>你的名字 — 个人官网</title>
+  <meta name="description" content="工程 / 项目作品集 / 简历与联系方式。">
+  <meta name="theme-color" content="#0b0c0f">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta property="og:title" content="你的名字 — 个人官网">
+  <meta property="og:description" content="像公司官网一样的简洁个人站：关于、项目、简历、联系。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og.png">
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "你的名字",
+    "jobTitle": "Electrical Engineering Student",
+    "url": "https://example.com",
+    "email": "mailto:you@example.com",
+    "knowsLanguage": "zh-CN,de,en"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#home">
+        <img src="assets/logo.svg" alt="" width="28" height="28" aria-hidden="true">
+        <span>你的名字</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="打开菜单" aria-controls="mainnav" aria-expanded="false">☰</button>
+      <nav id="mainnav" class="nav">
+        <a href="#about">关于</a>
+        <a href="#projects">项目</a>
+        <a href="#resume">简历</a>
+        <a href="#contact">联系</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换深浅色">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <h1>你好，我是 <span class="accent">你的名字</span>。</h1>
+        <p class="lead">Electrical Engineering · 无人机 · 汽车电子。像公司官网一样的个人站，在这里展示我的项目与经历。</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">查看项目</a>
+          <a class="btn" href="#contact">联系我</a>
+        </div>
+        <ul class="stats">
+          <li><strong>3+</strong><span>工程项目</span></li>
+          <li><strong>2</strong><span>实习经历</span></li>
+          <li><strong>3</strong><span>会的语言</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container grid-2">
+        <div>
+          <h2>关于我</h2>
+          <p>在此放 2–4 句话的简介：就读学校 / 专业方向 / 兴趣（无人机、控制、汽车电子）以及你的目标。</p>
+          <ul class="tags">
+            <li>Embedded</li><li>Control</li><li>FPV Drone</li><li>Power Electronics</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>快速信息</h3>
+          <ul class="list">
+            <li>城市：Aachen, DE</li>
+            <li>邮箱：<a href="mailto:you@example.com">you@example.com</a></li>
+            <li>GitHub：<a href="https://github.com/yourname" target="_blank" rel="noopener">yourname</a></li>
+            <li>LinkedIn：<a href="#" target="_blank" rel="noopener">你的链接</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section alt">
+      <div class="container">
+        <h2>项目精选</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>无人机自主悬停</h3>
+            <p>PID + IMU 融合实现稳定悬停，轨迹跟踪与抗风扰。</p>
+            <div class="actions">
+              <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn small" href="#" target="_blank" rel="noopener">演示视频</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>EV 电机控制模拟</h3>
+            <p>基于 Python/Matlab 的 FOC 控制仿真，含可视化仪表板。</p>
+            <div class="actions">
+              <a class="btn small" href="#" target="_blank" rel="noopener">项目文档</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>智能家居传感网</h3>
+            <p>ESP32 + MQTT + Grafana，低功耗多节点采集。</p>
+            <div class="actions">
+              <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume" class="section">
+      <div class="container">
+        <h2>简历</h2>
+        <p>放一段简历摘要，或链接到 PDF（替换为你的 PDF 文件）。</p>
+        <a class="btn" href="assets/CV.pdf" target="_blank" rel="noopener">下载 PDF 简历</a>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container grid-2">
+        <div>
+          <h2>联系我</h2>
+          <p>使用下方表单给我发消息（可用 Formspree / Netlify Forms）。</p>
+          <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <label>姓名
+              <input required name="name" placeholder="你的名字">
+            </label>
+            <label>邮箱
+              <input required type="email" name="email" placeholder="you@example.com">
+            </label>
+            <label>留言
+              <textarea required name="message" rows="5" placeholder="想对我说的话…"></textarea>
+            </label>
+            <button class="btn primary" type="submit">发送</button>
+            <p id="formMsg" class="muted" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="card">
+          <h3>更多方式</h3>
+          <ul class="list">
+            <li>邮件：<a href="mailto:you@example.com">you@example.com</a></li>
+            <li>GitHub：<a href="https://github.com/yourname" target="_blank" rel="noopener">yourname</a></li>
+            <li>LinkedIn：<a href="#" target="_blank" rel="noopener">你的链接</a></li>
+          </ul>
+          <p class="muted small">提示：在德国网站需要 <a href="impressum.html">Impressum</a> 与 <a href="privacy.html">Datenschutz</a> 页面。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container small">
+      <p>© <span id="year"></span> 你的名字 · <a href="impressum.html">Impressum</a> · <a href="privacy.html">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
